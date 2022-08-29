@@ -1,0 +1,26 @@
+﻿
+
+@model List<Demo.Models.Empoly>
+@{
+    ViewData["Title"] = "GetInfo";
+}
+
+<table>
+    <thead>
+        <tr>Id</tr>
+        <tr>Name</tr>
+        <tr>Address</tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Address</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
