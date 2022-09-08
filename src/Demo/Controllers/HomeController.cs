@@ -1,4 +1,5 @@
 ﻿using Demo.Models;
+using Demo.Models.Teacher;
 using Demo.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -9,11 +10,13 @@ namespace Demo.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         public readonly IEmploye _employe;
+        public readonly ITeacher _teacher;
 
-        public HomeController(ILogger<HomeController> logger,IEmploye employe)
+        public HomeController(ILogger<HomeController> logger,IEmploye employe,ITeacher teacher)
         {
             _logger = logger;
             _employe = employe;
+            _teacher = teacher;
         }
 
         public IActionResult Index()
@@ -35,6 +38,20 @@ namespace Demo.Controllers
             var emplist = _employe.EmployeeList();
             return View(emplist);
 
+
+        }
+        public IActionResult TeacherList()
+        {
+            List<Teacher> teachers = _teacher.getTeacher();
+            return View(teachers);
+
+
+        }
+        public IActionResult SpecificTeacher( int id)
+        {
+           Teacher teacher= _teacher.specificTeacher(id);
+            
+            return View(teacher);
 
         }
         public IActionResult Details(int id)

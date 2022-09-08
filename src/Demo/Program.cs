@@ -22,11 +22,13 @@ builder.Services.AddControllersWithViews();
 
 
 //builder.Services.AddSingleton<IEmploye,MokEmpolye>();
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<Autofac.ContainerBuilder>(containerBuilder => {
-    containerBuilder.RegisterModule(new EmpolyeModule());
-});
 
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<Autofac.ContainerBuilder>(ContainerBuilder =>
+{
+    ContainerBuilder.RegisterModule(new All_Modelue());
+});
 
 var app = builder.Build();
 
